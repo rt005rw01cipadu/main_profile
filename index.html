@@ -1,0 +1,1583 @@
+<!DOCTYPE html>
+<!--
+CREATED BY	: Andang Chrisnandi
+Create Date : 2026-06-24
+-->
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RT 005 RW 01 – Kelurahan Cipadu | Kampung Maju Bersama</title>
+  <meta name="description" content="Website resmi RT 005 RW 01 Kelurahan Cipadu. Transparansi, informasi warga, dan digitalisasi kampung." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --hijau:       #1a7a3c;
+      --hijau-muda:  #25a255;
+      --hijau-gelap: #0f5228;
+      --biru:        #1a237e;
+      --biru-muda:   #283593;
+      --oranye:      #e65c00;
+      --oranye-muda: #ff7c2a;
+      --putih:       #ffffff;
+      --abu:         #f4f7f4;
+      --teks:        #1c2b1c;
+      --teks-ringan: #5a6b5a;
+      --radius:      14px;
+      --shadow:      0 4px 24px rgba(26,122,60,0.13);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Nunito', sans-serif;
+      background: var(--putih);
+      color: var(--teks);
+      overflow-x: hidden;
+    }
+
+    /* ── NAVBAR ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 999;
+      background: rgba(15, 82, 40, 0.96);
+      backdrop-filter: blur(10px);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 24px; height: 64px;
+      box-shadow: 0 2px 16px rgba(0,0,0,0.18);
+    }
+    .nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+    .nav-logo img { height: 44px; width: auto; }
+    .nav-logo span {
+      color: #fff; font-family: 'Poppins', sans-serif;
+      font-weight: 700; font-size: 0.95rem; line-height: 1.2;
+    }
+    .nav-links { display: flex; gap: 6px; }
+    .nav-links a {
+      color: rgba(255,255,255,0.85); text-decoration: none;
+      font-size: 0.82rem; font-weight: 600; padding: 6px 10px;
+      border-radius: 8px; transition: background 0.2s, color 0.2s;
+      white-space: nowrap;
+    }
+    .nav-links a:hover { background: rgba(255,255,255,0.15); color: #fff; }
+    .hamburger {
+      display: none; flex-direction: column; gap: 5px;
+      background: none; border: none; cursor: pointer; padding: 4px;
+    }
+    .hamburger span { display: block; width: 26px; height: 3px; background: #fff; border-radius: 2px; transition: 0.3s; }
+    .mobile-menu {
+      display: none; position: fixed; top: 64px; left: 0; right: 0;
+      background: var(--hijau-gelap); z-index: 998; flex-direction: column;
+      padding: 16px 20px; gap: 4px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a {
+      color: rgba(255,255,255,0.9); text-decoration: none;
+      font-size: 1rem; font-weight: 600; padding: 12px 16px;
+      border-radius: 10px; transition: background 0.2s;
+    }
+    .mobile-menu a:hover { background: rgba(255,255,255,0.1); }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      background: linear-gradient(145deg, var(--hijau-gelap) 0%, var(--hijau) 50%, var(--hijau-muda) 100%);
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      text-align: center; padding: 100px 24px 60px;
+      position: relative; overflow: hidden;
+    }
+    .hero::before {
+      content: ''; position: absolute; inset: 0;
+      background: radial-gradient(ellipse at 60% 40%, rgba(255,255,255,0.07) 0%, transparent 60%),
+                  radial-gradient(ellipse at 20% 80%, rgba(230,92,0,0.1) 0%, transparent 50%);
+    }
+    .hero-badge {
+      background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.3);
+      color: #fff; font-size: 0.78rem; font-weight: 700; letter-spacing: 2px;
+      padding: 6px 18px; border-radius: 100px; margin-bottom: 24px;
+      text-transform: uppercase; backdrop-filter: blur(6px);
+    }
+    .hero-logo {
+      width: 140px; height: auto; margin-bottom: 28px;
+      filter: drop-shadow(0 8px 32px rgba(0,0,0,0.35));
+      animation: floatLogo 3.5s ease-in-out infinite;
+    }
+    @keyframes floatLogo {
+      0%,100% { transform: translateY(0); }
+      50%      { transform: translateY(-10px); }
+    }
+    .hero h1 {
+      font-family: 'Poppins', sans-serif; font-weight: 800;
+      font-size: clamp(2rem, 6vw, 3.6rem); color: #fff;
+      line-height: 1.15; margin-bottom: 12px;
+      text-shadow: 0 2px 20px rgba(0,0,0,0.3);
+    }
+    .hero h1 span { color: var(--oranye-muda); }
+    .hero p {
+      font-size: clamp(1rem, 2.5vw, 1.2rem); color: rgba(255,255,255,0.85);
+      max-width: 560px; line-height: 1.7; margin-bottom: 36px;
+    }
+    .hero-btns { display: flex; gap: 14px; flex-wrap: wrap; justify-content: center; }
+    .btn-primary {
+      background: var(--oranye); color: #fff; text-decoration: none;
+      font-family: 'Poppins', sans-serif; font-weight: 700; font-size: 0.95rem;
+      padding: 14px 30px; border-radius: 100px;
+      box-shadow: 0 4px 20px rgba(230,92,0,0.4);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(230,92,0,0.5); }
+    .btn-outline {
+      border: 2px solid rgba(255,255,255,0.6); color: #fff; text-decoration: none;
+      font-family: 'Poppins', sans-serif; font-weight: 700; font-size: 0.95rem;
+      padding: 12px 28px; border-radius: 100px;
+      transition: background 0.2s, border-color 0.2s;
+    }
+    .btn-outline:hover { background: rgba(255,255,255,0.12); border-color: #fff; }
+    .hero-stats {
+      display: flex; gap: 32px; flex-wrap: wrap; justify-content: center;
+      margin-top: 56px; position: relative;
+    }
+    .stat {
+      text-align: center; color: #fff;
+    }
+    .stat-num {
+      font-family: 'Poppins', sans-serif; font-weight: 800;
+      font-size: 2.2rem; color: var(--oranye-muda); line-height: 1;
+    }
+    .stat-label { font-size: 0.8rem; color: rgba(255,255,255,0.75); margin-top: 4px; }
+    .scroll-hint {
+      position: absolute; bottom: 28px; left: 50%; transform: translateX(-50%);
+      color: rgba(255,255,255,0.5); font-size: 0.78rem; text-align: center;
+      animation: bounce 2s ease-in-out infinite;
+    }
+    @keyframes bounce { 0%,100%{transform:translateX(-50%) translateY(0)} 50%{transform:translateX(-50%) translateY(8px)} }
+
+    /* ── SECTION BASE ── */
+    section { padding: 80px 24px; }
+    .container { max-width: 1100px; margin: 0 auto; }
+    .section-label {
+      font-size: 0.75rem; font-weight: 700; letter-spacing: 2.5px;
+      text-transform: uppercase; color: var(--oranye); margin-bottom: 10px;
+    }
+    .section-title {
+      font-family: 'Poppins', sans-serif; font-weight: 800;
+      font-size: clamp(1.6rem, 4vw, 2.4rem); color: var(--teks);
+      line-height: 1.2; margin-bottom: 16px;
+    }
+    .section-title span { color: var(--hijau); }
+    .section-sub { color: var(--teks-ringan); font-size: 1.05rem; line-height: 1.7; max-width: 600px; }
+    .divider {
+      width: 56px; height: 4px; background: linear-gradient(90deg, var(--hijau), var(--oranye));
+      border-radius: 4px; margin: 20px 0 32px;
+    }
+
+    /* ── PENGUMUMAN BANNER ── */
+    .pengumuman-banner {
+      background: linear-gradient(90deg, var(--biru), var(--biru-muda));
+      padding: 0;
+    }
+    .ticker-wrap {
+      display: flex; align-items: center; height: 48px; overflow: hidden;
+    }
+    .ticker-label {
+      background: var(--oranye); color: #fff;
+      font-family: 'Poppins', sans-serif; font-weight: 700; font-size: 0.78rem;
+      padding: 0 18px; height: 100%; display: flex; align-items: center;
+      white-space: nowrap; flex-shrink: 0; letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+    .ticker-content {
+      display: flex; align-items: center; overflow: hidden; flex: 1;
+      padding: 0 16px;
+    }
+    .ticker-text {
+      white-space: nowrap; color: rgba(255,255,255,0.92);
+      font-size: 0.88rem; font-weight: 600;
+      animation: ticker 28s linear infinite;
+    }
+    @keyframes ticker {
+      0%   { transform: translateX(100vw); }
+      100% { transform: translateX(-100%); }
+    }
+
+    /* ── VISI MISI ── */
+    #visi-misi { background: var(--abu); }
+    .visi-misi-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
+    .vm-card {
+      background: #fff; border-radius: var(--radius);
+      padding: 32px 28px; box-shadow: var(--shadow);
+      border-top: 4px solid var(--hijau); position: relative; overflow: hidden;
+    }
+    .vm-card.misi { border-top-color: var(--oranye); }
+    .vm-card::after {
+      content: ''; position: absolute; bottom: -20px; right: -20px;
+      width: 80px; height: 80px; border-radius: 50%;
+      background: rgba(26,122,60,0.06);
+    }
+    .vm-card.misi::after { background: rgba(230,92,0,0.06); }
+    .vm-icon { font-size: 2.4rem; margin-bottom: 16px; }
+    .vm-card h3 {
+      font-family: 'Poppins', sans-serif; font-weight: 700; font-size: 1.2rem;
+      color: var(--hijau); margin-bottom: 14px;
+    }
+    .vm-card.misi h3 { color: var(--oranye); }
+    .vm-card p { color: var(--teks-ringan); line-height: 1.75; font-size: 0.97rem; }
+    .misi-list { list-style: none; }
+    .misi-list li {
+      display: flex; align-items: flex-start; gap: 10px;
+      color: var(--teks-ringan); font-size: 0.97rem; margin-bottom: 10px; line-height: 1.6;
+    }
+    .misi-list li::before {
+      content: '✓'; flex-shrink: 0;
+      background: var(--oranye); color: #fff;
+      width: 20px; height: 20px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.7rem; font-weight: 800; margin-top: 2px;
+    }
+
+    /* ── STRUKTUR ORGANISASI ── */
+    #struktur { background: #fff; }
+    .struktur-grid {
+      display: grid; gap: 20px;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    }
+    .jabatan-card {
+      text-align: center; padding: 28px 20px;
+      background: linear-gradient(145deg, #fff, var(--abu));
+      border-radius: var(--radius); box-shadow: var(--shadow);
+      border-bottom: 3px solid var(--hijau); transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .jabatan-card:hover { transform: translateY(-4px); box-shadow: 0 8px 32px rgba(26,122,60,0.18); }
+    .jabatan-card.ketua { border-bottom-color: var(--oranye); }
+    .avatar {
+      width: 72px; height: 72px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--hijau), var(--hijau-muda));
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.8rem; margin: 0 auto 14px;
+      box-shadow: 0 4px 16px rgba(26,122,60,0.25);
+    }
+    .jabatan-card.ketua .avatar {
+      background: linear-gradient(135deg, var(--oranye), var(--oranye-muda));
+    }
+    .jabatan-card h4 {
+      font-family: 'Poppins', sans-serif; font-weight: 700;
+      font-size: 1rem; color: var(--teks); margin-bottom: 4px;
+    }
+    .jabatan-tag {
+      display: inline-block; background: var(--abu);
+      color: var(--hijau); font-size: 0.75rem; font-weight: 700;
+      padding: 3px 12px; border-radius: 100px; margin-bottom: 8px;
+      border: 1px solid rgba(26,122,60,0.2);
+    }
+    .jabatan-card.ketua .jabatan-tag {
+      background: rgba(230,92,0,0.1); color: var(--oranye);
+      border-color: rgba(230,92,0,0.2);
+    }
+    .jabatan-phone { font-size: 0.82rem; color: var(--teks-ringan); }
+
+
+    /* ── POPUP DETAIL PENGURUS ── */
+    .jabatan-card.clickable {
+      cursor: pointer;
+      position: relative;
+      outline: none;
+    }
+    .jabatan-card.clickable::after {
+      content: 'Klik detail';
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      background: rgba(26,122,60,0.09);
+      color: var(--hijau);
+      font-size: 0.66rem;
+      font-weight: 800;
+      padding: 3px 8px;
+      border-radius: 100px;
+      opacity: 0;
+      transform: translateY(-4px);
+      transition: opacity 0.2s, transform 0.2s;
+    }
+    .jabatan-card.clickable:hover::after,
+    .jabatan-card.clickable:focus-visible::after {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .jabatan-card.clickable:focus-visible {
+      box-shadow: 0 0 0 4px rgba(37,162,85,0.22), var(--shadow);
+    }
+    .pengurus-modal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 10000;
+      background: rgba(10, 26, 10, 0.72);
+      backdrop-filter: blur(5px);
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+    .pengurus-modal.open { display: flex; }
+    .pengurus-modal-card {
+      width: min(520px, 100%);
+      background: #fff;
+      border-radius: 20px;
+      box-shadow: 0 24px 80px rgba(0,0,0,0.35);
+      padding: 28px 26px 24px;
+      position: relative;
+      border-top: 5px solid var(--hijau);
+      animation: modalPop 0.22s ease-out;
+    }
+    @keyframes modalPop {
+      from { opacity: 0; transform: translateY(14px) scale(0.98); }
+      to   { opacity: 1; transform: translateY(0) scale(1); }
+    }
+    .pengurus-close {
+      position: absolute;
+      top: 14px;
+      right: 14px;
+      width: 36px;
+      height: 36px;
+      border: none;
+      border-radius: 50%;
+      background: var(--abu);
+      color: var(--teks);
+      font-size: 1.1rem;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.2s;
+    }
+    .pengurus-close:hover { background: rgba(230,92,0,0.12); transform: rotate(90deg); }
+    .pengurus-modal-head {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding-right: 38px;
+      margin-bottom: 20px;
+    }
+    .pengurus-modal-icon {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--hijau), var(--hijau-muda));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.65rem;
+      box-shadow: 0 4px 16px rgba(26,122,60,0.22);
+      flex-shrink: 0;
+    }
+    .pengurus-modal-title {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 800;
+      font-size: 1.18rem;
+      color: var(--teks);
+      line-height: 1.3;
+      margin-bottom: 5px;
+    }
+    .pengurus-modal-subtitle {
+      display: inline-block;
+      color: var(--hijau);
+      background: rgba(26,122,60,0.09);
+      border: 1px solid rgba(26,122,60,0.18);
+      font-size: 0.76rem;
+      font-weight: 800;
+      padding: 4px 12px;
+      border-radius: 100px;
+    }
+    .pengurus-detail-box {
+      background: var(--abu);
+      border-radius: 14px;
+      padding: 16px 16px;
+      margin-top: 12px;
+      border: 1px solid rgba(26,122,60,0.08);
+    }
+    .pengurus-detail-label {
+      color: var(--hijau);
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 0.4px;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+    .pengurus-detail-name {
+      color: var(--teks);
+      font-family: 'Poppins', sans-serif;
+      font-weight: 700;
+      font-size: 1rem;
+    }
+    .pengurus-member-list {
+      list-style: none;
+      display: grid;
+      gap: 8px;
+      margin-top: 4px;
+    }
+    .pengurus-member-list li {
+      background: #fff;
+      border-radius: 10px;
+      padding: 9px 12px;
+      color: var(--teks-ringan);
+      font-size: 0.92rem;
+      border-left: 3px solid var(--hijau-muda);
+    }
+    .pengurus-member-list li::before {
+      content: '👤 ';
+      margin-right: 3px;
+    }
+    .pengurus-modal-note {
+      margin-top: 14px;
+      color: var(--teks-ringan);
+      font-size: 0.82rem;
+      line-height: 1.55;
+    }
+
+    /* ── PROGRAM KERJA & AGENDA ── */
+    #program { background: var(--abu); }
+    .program-tabs { display: flex; gap: 8px; margin-bottom: 28px; flex-wrap: wrap; }
+    .tab-btn {
+      padding: 8px 20px; border-radius: 100px; border: 2px solid var(--hijau);
+      background: transparent; color: var(--hijau); font-family: 'Poppins', sans-serif;
+      font-weight: 600; font-size: 0.88rem; cursor: pointer; transition: all 0.2s;
+    }
+    .tab-btn.active { background: var(--hijau); color: #fff; }
+    .tab-content { display: none; }
+    .tab-content.active { display: block; }
+    .program-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+    .program-card {
+      background: #fff; border-radius: var(--radius);
+      padding: 24px 22px; box-shadow: var(--shadow);
+      display: flex; gap: 16px; align-items: flex-start;
+      transition: transform 0.2s;
+    }
+    .program-card:hover { transform: translateY(-3px); }
+    .program-icon {
+      width: 52px; height: 52px; border-radius: 12px; flex-shrink: 0;
+      background: linear-gradient(135deg, var(--hijau), var(--hijau-muda));
+      display: flex; align-items: center; justify-content: center; font-size: 1.5rem;
+    }
+    .program-body h4 {
+      font-family: 'Poppins', sans-serif; font-weight: 700; font-size: 1rem;
+      color: var(--teks); margin-bottom: 6px;
+    }
+    .program-body p { font-size: 0.88rem; color: var(--teks-ringan); line-height: 1.6; }
+    .program-frek {
+      display: inline-block; margin-top: 8px; background: rgba(26,122,60,0.1);
+      color: var(--hijau); font-size: 0.74rem; font-weight: 700;
+      padding: 2px 10px; border-radius: 100px;
+    }
+
+    .agenda-list { display: flex; flex-direction: column; gap: 16px; }
+    .agenda-item {
+      background: #fff; border-radius: var(--radius); padding: 20px 24px;
+      box-shadow: var(--shadow); display: flex; align-items: center; gap: 20px;
+    }
+    .agenda-date {
+      text-align: center; background: var(--hijau); color: #fff;
+      border-radius: 10px; padding: 10px 14px; flex-shrink: 0; min-width: 58px;
+    }
+    .agenda-date .day { font-family: 'Poppins', sans-serif; font-weight: 800; font-size: 1.5rem; line-height: 1; }
+    .agenda-date .month { font-size: 0.7rem; text-transform: uppercase; font-weight: 600; }
+    .agenda-info h4 { font-family: 'Poppins', sans-serif; font-weight: 700; font-size: 1rem; color: var(--teks); }
+    .agenda-info p { font-size: 0.85rem; color: var(--teks-ringan); margin-top: 3px; }
+    .agenda-badge {
+      margin-left: auto; flex-shrink: 0; padding: 4px 14px;
+      border-radius: 100px; font-size: 0.75rem; font-weight: 700;
+      background: rgba(26,122,60,0.12); color: var(--hijau);
+    }
+
+    /* ── FOTO KEGIATAN ── */
+    #foto { background: var(--teks); }
+    #foto .section-title { color: #fff; }
+    #foto .section-sub { color: rgba(255,255,255,0.7); }
+    #foto .section-label { color: var(--oranye-muda); }
+    #foto .divider { background: linear-gradient(90deg, var(--oranye), transparent); }
+    .slideshow-container {
+      position: relative; border-radius: 18px; overflow: hidden;
+      box-shadow: 0 12px 48px rgba(0,0,0,0.4); background: #111;
+    }
+    .slideshow-inner {
+      display: flex; transition: transform 0.5s cubic-bezier(0.4,0,0.2,1);
+    }
+    .slide {
+      min-width: 100%; height: 440px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1rem; color: rgba(255,255,255,0.4);
+      background: #1a2b1a; position: relative; overflow: hidden;
+    }
+    .slide iframe {
+      width: 100%; height: 100%; border: none; pointer-events: none;
+    }
+    .slide-placeholder {
+      display: flex; flex-direction: column; align-items: center; gap: 12px;
+    }
+    .slide-placeholder .icon { font-size: 3rem; }
+    .slide-placeholder p { font-size: 0.9rem; max-width: 280px; text-align: center; line-height: 1.6; }
+    .slide-prev, .slide-next {
+      position: absolute; top: 50%; transform: translateY(-50%);
+      background: rgba(255,255,255,0.15); border: none; color: #fff;
+      width: 44px; height: 44px; border-radius: 50%; font-size: 1.2rem;
+      cursor: pointer; transition: background 0.2s; z-index: 10;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .slide-prev { left: 14px; }
+    .slide-next { right: 14px; }
+    .slide-prev:hover, .slide-next:hover { background: rgba(255,255,255,0.3); }
+    .slide-dots {
+      display: flex; justify-content: center; gap: 8px; margin-top: 18px;
+    }
+    .dot {
+      width: 8px; height: 8px; border-radius: 50%; background: rgba(255,255,255,0.3);
+      transition: all 0.3s; cursor: pointer;
+    }
+    .dot.active { background: var(--oranye); width: 24px; border-radius: 4px; }
+    .gdrive-info {
+      margin-top: 20px; background: rgba(255,255,255,0.07); border-radius: 12px;
+      padding: 16px 20px; text-align: center; color: rgba(255,255,255,0.6);
+      font-size: 0.85rem; line-height: 1.6;
+    }
+    .gdrive-info a { color: var(--oranye-muda); text-decoration: none; font-weight: 600; }
+
+    /* ── LAYANAN DIGITAL ── */
+    #layanan { background: #fff; }
+    .layanan-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 24px; }
+    .layanan-card {
+      border-radius: var(--radius); overflow: hidden;
+      box-shadow: var(--shadow); transition: transform 0.25s, box-shadow 0.25s;
+      text-decoration: none; display: block;
+    }
+    .layanan-card:hover { transform: translateY(-6px); box-shadow: 0 12px 40px rgba(26,122,60,0.2); }
+    .layanan-header {
+      padding: 36px 28px 28px;
+      display: flex; flex-direction: column; align-items: flex-start; gap: 14px;
+    }
+    .layanan-card.kas .layanan-header  { background: linear-gradient(135deg, var(--hijau-gelap), var(--hijau)); }
+    .layanan-card.iuran .layanan-header { background: linear-gradient(135deg, var(--biru), var(--biru-muda)); }
+    .layanan-card.info .layanan-header  { background: linear-gradient(135deg, #5d4037, #8d6e63); }
+    .layanan-card.kontak .layanan-header { background: linear-gradient(135deg, #1565c0, #1976d2); }
+    .layanan-emoji { font-size: 2.5rem; }
+    .layanan-title {
+      font-family: 'Poppins', sans-serif; font-weight: 800;
+      font-size: 1.2rem; color: #fff; line-height: 1.2;
+    }
+    .layanan-desc { font-size: 0.85rem; color: rgba(255,255,255,0.8); line-height: 1.5; }
+    .layanan-body { background: var(--abu); padding: 18px 28px; }
+    .layanan-body p { font-size: 0.88rem; color: var(--teks-ringan); line-height: 1.6; }
+    .layanan-cta {
+      display: inline-flex; align-items: center; gap: 6px;
+      margin-top: 12px; font-family: 'Poppins', sans-serif; font-weight: 700;
+      font-size: 0.82rem; color: var(--hijau);
+    }
+    .layanan-card.iuran .layanan-cta { color: var(--biru); }
+
+    /* ── INFORMASI WARGA ── */
+    #info { background: var(--abu); }
+    .info-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; }
+    .info-card {
+      background: #fff; border-radius: var(--radius); padding: 24px 20px;
+      box-shadow: var(--shadow); text-align: center;
+    }
+    .info-num {
+      font-family: 'Poppins', sans-serif; font-weight: 800;
+      font-size: 2.4rem; color: var(--hijau); line-height: 1;
+    }
+    .info-label { font-size: 0.88rem; color: var(--teks-ringan); margin-top: 6px; }
+
+    /* ── KONTAK ── */
+    #kontak { background: linear-gradient(145deg, var(--hijau-gelap), var(--biru)); }
+    #kontak .section-title { color: #fff; }
+    #kontak .section-label { color: var(--oranye-muda); }
+    #kontak .divider { background: linear-gradient(90deg, var(--oranye), transparent); }
+    #kontak .section-sub { color: rgba(255,255,255,0.75); }
+    .kontak-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+    .kontak-card {
+      background: rgba(255,255,255,0.1); backdrop-filter: blur(8px);
+      border-radius: var(--radius); padding: 24px 22px;
+      border: 1px solid rgba(255,255,255,0.15);
+      display: flex; align-items: flex-start; gap: 16px;
+    }
+    .kontak-icon {
+      width: 48px; height: 48px; border-radius: 12px; flex-shrink: 0;
+      background: rgba(255,255,255,0.15); display: flex; align-items: center;
+      justify-content: center; font-size: 1.4rem;
+    }
+    .kontak-card h4 {
+      font-family: 'Poppins', sans-serif; font-weight: 700; font-size: 0.95rem;
+      color: #fff; margin-bottom: 6px;
+    }
+    .kontak-card p { font-size: 0.88rem; color: rgba(255,255,255,0.75); line-height: 1.6; }
+
+    /* ── FOOTER ── */
+    footer {
+      background: #0a1a0a; color: rgba(255,255,255,0.6);
+      text-align: center; padding: 32px 24px; font-size: 0.85rem;
+    }
+    footer strong { color: rgba(255,255,255,0.9); }
+    .footer-logo { width: 52px; margin-bottom: 14px; opacity: 0.85; }
+    footer a { color: var(--oranye-muda); text-decoration: none; }
+
+    /* ── BACK TO TOP ── */
+    .back-top {
+      position: fixed; bottom: 24px; right: 24px; z-index: 990;
+      width: 48px; height: 48px; border-radius: 50%;
+      background: var(--hijau); color: #fff; border: none; cursor: pointer;
+      font-size: 1.3rem; box-shadow: 0 4px 16px rgba(26,122,60,0.4);
+      display: flex; align-items: center; justify-content: center;
+      opacity: 0; transform: translateY(20px); transition: all 0.3s;
+    }
+    .back-top.visible { opacity: 1; transform: translateY(0); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+      .visi-misi-grid { grid-template-columns: 1fr; }
+      .kontak-grid { grid-template-columns: 1fr; }
+      .slide { height: 260px; }
+      .hero-stats { gap: 20px; }
+      .stat-num { font-size: 1.7rem; }
+      section { padding: 60px 18px; }
+      .agenda-item { flex-wrap: wrap; }
+      .agenda-badge { margin-left: 0; }
+    }
+    @media (max-width: 480px) {
+      .layanan-grid { grid-template-columns: 1fr; }
+      .info-grid { grid-template-columns: 1fr 1fr; }
+    }
+
+    /* ── ANIMATION ON SCROLL ── */
+    .fade-in { opacity: 0; transform: translateY(28px); transition: opacity 0.6s ease, transform 0.6s ease; }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+  </style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav>
+  <a href="#" class="nav-logo">
+    <img src="logo-rt.png" alt="Logo RT 005 RW 01" onerror="this.style.display='none'" />
+    <span>RT 005 RW 01<br>Kel. Cipadu</span>
+  </a>
+  <div class="nav-links">
+    <a href="#visi-misi">Visi &amp; Misi</a>
+    <a href="#struktur">Pengurus</a>
+    <a href="#program">Program</a>
+    <a href="#foto">Kegiatan</a>
+    <a href="#layanan">Layanan</a>
+    <a href="#kontak">Kontak</a>
+  </div>
+  <button class="hamburger" onclick="toggleMenu()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#visi-misi" onclick="toggleMenu()">🎯 Visi &amp; Misi</a>
+  <a href="#struktur" onclick="toggleMenu()">👥 Pengurus RT</a>
+  <a href="#program" onclick="toggleMenu()">📋 Program Kerja</a>
+  <a href="#foto" onclick="toggleMenu()">📸 Foto Kegiatan</a>
+  <a href="#layanan" onclick="toggleMenu()">💻 Layanan Digital</a>
+  <a href="#kontak" onclick="toggleMenu()">📞 Kontak</a>
+</div>
+
+<!-- TICKER PENGUMUMAN -->
+<div class="pengumuman-banner" style="margin-top:64px;">
+  <div class="ticker-wrap">
+    <div class="ticker-label">📢 Pengumuman</div>
+    <div class="ticker-content">
+      <span class="ticker-text">
+        🏡 Selamat datang di website resmi RT 005 RW 01 Kelurahan Cipadu &nbsp;|&nbsp;
+        🗓️ Kerja Bakti rutin setiap Minggu pertama bulan berjalan &nbsp;|&nbsp;
+        🌙 Pengajian malam Jum'at, Majelis AL Wasi pukul 19.30 WIB &nbsp;|&nbsp;
+        💰 Iuran bulanan warga dapat dibayar kepada Kolektor &nbsp;|&nbsp;
+        📱 Download dan simpan website ini di HP Anda untuk akses mudah
+      </span>
+    </div>
+  </div>
+</div>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-badge">🏡 Kampung Maju Bersama</div>
+  <img src="logo-rt.png" class="hero-logo" alt="Logo RT 005 RW 01"
+       onerror="this.outerHTML='<div style=\'font-size:5rem;margin-bottom:28px;\'>🏘️</div>'" />
+  <h1>RT 005 RW 01<br><span>Kelurahan Cipadu</span></h1>
+  <p>Bersama membangun kampung yang maju, transparan, dan berdaya melalui semangat gotong royong dan digitalisasi.</p>
+  <div class="hero-btns">
+    <a href="#layanan" class="btn-primary">📊 Layanan Digital</a>
+    <a href="#program" class="btn-outline">📋 Program Kerja</a>
+  </div>
+  <div class="hero-stats">
+    <div class="stat">
+      <div class="stat-num" id="cntKK">55+</div>
+      <div class="stat-label">Kepala Keluarga</div>
+    </div>
+    <!--div class="stat">
+      <div class="stat-num" id="cntWarga">320+</div>
+      <div class="stat-label">Total Warga</div>
+    </div-->
+    <div class="stat">
+      <div class="stat-num" id="cntProgram">7</div>
+      <div class="stat-label">Program Kerja</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">2026</div>
+      <div class="stat-label">Tahun Aktif</div>
+    </div>
+  </div>
+  <div class="scroll-hint">↓ Scroll untuk melihat lebih</div>
+</section>
+
+<!-- VISI MISI -->
+<section id="visi-misi">
+  <div class="container">
+    <div class="section-label">Fondasi Kami</div>
+    <h2 class="section-title">Visi &amp; <span>Misi</span></h2>
+    <div class="divider"></div>
+    <div class="visi-misi-grid fade-in">
+      <div class="vm-card">
+        <div class="vm-icon">🌟</div>
+        <h3>Visi</h3>
+        <p>
+          Mewujudkan RT 005 RW 01 Kelurahan Cipadu sebagai lingkungan yang <strong>aman, nyaman, bersih, dan rukun</strong> — di mana setiap warga hidup berdampingan dengan semangat gotong royong, saling peduli, dan bersama-sama membangun kampung yang maju serta berdaya menuju masyarakat yang sejahtera.
+        </p>
+      </div>
+      <div class="vm-card misi">
+        <div class="vm-icon">🎯</div>
+        <h3>Misi</h3>
+        <ul class="misi-list">
+          <li>Meningkatkan keamanan dan ketertiban lingkungan melalui siskamling dan sistem ronda bergilir.</li>
+          <li>Membudayakan gotong royong dan kerja bakti secara rutin untuk menjaga kebersihan lingkungan.</li>
+          <li>Meningkatkan kualitas kegiatan sosial, keagamaan, dan pemberdayaan warga.</li>
+          <li>Mengelola administrasi RT secara transparan, akuntabel, dan berbasis digital.</li>
+          <li>Memfasilitasi kebutuhan warga dalam urusan administrasi kependudukan.</li>
+          <li>Menjalin komunikasi yang aktif dan harmonis antar seluruh warga RT.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STRUKTUR ORGANISASI -->
+<section id="struktur">
+  <div class="container">
+    <div class="section-label">Kepengurusan</div>
+    <h2 class="section-title">Struktur <span>Organisasi</span></h2>
+    <p class="section-sub">Pengurus RT 005 RW 01 periode 2026–2029 yang siap melayani seluruh warga dengan sepenuh hati.</p>
+    <div class="divider"></div>
+
+    <!-- Baris 1: Ketua -->
+    <div style="display:flex;justify-content:center;margin-bottom:20px;">
+      <div class="jabatan-card ketua fade-in" style="max-width:240px;width:100%;">
+        <div class="avatar">👨‍💼</div>
+        <div class="jabatan-tag">Ketua RT</div>
+        <h4>Dody Jaka Mardiansyah</h4>
+        <!--div class="jabatan-phone">📱 08xx-xxxx-xxxx</div-->
+      </div>
+    </div>
+
+    <!-- Baris 2: Wakil & Sekretaris -->
+    <div class="struktur-grid fade-in">      
+      <div class="jabatan-card">
+        <div class="avatar">📝</div>
+        <div class="jabatan-tag">Sekretaris</div>
+        <h4>Djoko Supratman</h4>
+        <!--div class="jabatan-phone">📱 08xx-xxxx-xxxx</div-->
+      </div>
+      <div class="jabatan-card">
+        <div class="avatar">💰</div>
+        <div class="jabatan-tag">Bendahara</div>
+        <h4>Tugino</h4>
+        <!--div class="jabatan-phone">📱 08xx-xxxx-xxxx</div-->
+      </div>
+      <div class="jabatan-card clickable" role="button" tabindex="0" onclick="openPengurusModal('sosial')" onkeydown="handlePengurusCardKey(event, 'sosial')" aria-label="Lihat detail Sosial dan Kemasyarakatan">
+        <div class="avatar">🤝</div>
+        <div class="jabatan-tag">Sosial &amp; Kemasyarakatan</div>
+        <h4>Andang Chrisnandi</h4>
+        <!--div class="jabatan-phone">📱 08xx-xxxx-xxxx</div-->
+      </div>
+	  <div class="jabatan-card clickable" role="button" tabindex="0" onclick="openPengurusModal('sarpras')" onkeydown="handlePengurusCardKey(event, 'sarpras')" aria-label="Lihat detail Sarana Prasarana dan Fasilitas">
+        <div class="avatar">🛠️</div>
+        <div class="jabatan-tag">Sarana Prasarana &amp; Fasilitas</div>
+        <h4>M. Ilham</h4>
+        <!--div class="jabatan-phone">📱 08xx-xxxx-xxxx</div-->
+      </div>
+      <div class="jabatan-card clickable" role="button" tabindex="0" onclick="openPengurusModal('kebersihan')" onkeydown="handlePengurusCardKey(event, 'kebersihan')" aria-label="Lihat detail Kebersihan dan Lingkungan">
+        <div class="avatar">🌿</div>
+        <div class="jabatan-tag">Kebersihan &amp; Lingkungan</div>
+        <h4>Iwan</h4>
+        <!--div class="jabatan-phone">📱 08xx-xxxx-xxxx</div-->
+      </div>
+      <div class="jabatan-card clickable" role="button" tabindex="0" onclick="openPengurusModal('keamanan')" onkeydown="handlePengurusCardKey(event, 'keamanan')" aria-label="Lihat detail Keamanan">
+        <div class="avatar">🛡️</div>
+        <div class="jabatan-tag">Keamanan</div>
+        <h4>Arif Wiyah</h4>
+        <!--div class="jabatan-phone">📱 08xx-xxxx-xxxx</div-->
+      </div>
+      <div class="jabatan-card clickable" role="button" tabindex="0" onclick="openPengurusModal('pkk')" onkeydown="handlePengurusCardKey(event, 'pkk')" aria-label="Lihat detail PKK">
+        <div class="avatar">👩‍💼</div>
+        <div class="jabatan-tag">Pemberdayaan Wanita & PKK</div>
+        <h4>Marningsih</h4>
+        <!--div class="jabatan-phone">📱 08xx-xxxx-xxxx</div-->
+      </div>
+	  <div class="jabatan-card">
+        <div class="avatar">💼</div>
+        <div class="jabatan-tag">Koperasi</div>
+        <h4>Noviansyah</h4>
+        <!--div class="jabatan-phone">📱 08xx-xxxx-xxxx</div-->
+      </div>
+    </div>
+    <!--p style="margin-top:20px;color:var(--teks-ringan);font-size:0.85rem;text-align:center;">
+      💡 <em>Untuk memperbarui nama pengurus, edit file <code>index.html</code> atau hubungkan dengan Google Sheet.</em>
+    </p-->
+  </div>
+</section>
+
+
+
+<!-- POPUP DETAIL PENGURUS -->
+<div class="pengurus-modal" id="pengurusModal" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="modalBidang">
+  <div class="pengurus-modal-card" role="document">
+    <button class="pengurus-close" type="button" onclick="closePengurusModal()" aria-label="Tutup popup">✕</button>
+
+    <div class="pengurus-modal-head">
+      <div class="pengurus-modal-icon" id="modalIcon">👥</div>
+      <div>
+        <h3 class="pengurus-modal-title" id="modalBidang">Detail Pengurus</h3>
+        <span class="pengurus-modal-subtitle">RT 005 RW 01 Kelurahan Cipadu</span>
+      </div>
+    </div>
+
+    <div class="pengurus-detail-box">
+      <div class="pengurus-detail-label">Ketua / Koordinator</div>
+      <div class="pengurus-detail-name" id="modalKetua">-</div>
+    </div>
+
+    <div class="pengurus-detail-box">
+      <div class="pengurus-detail-label">Anggota</div>
+      <ul class="pengurus-member-list" id="modalAnggota"></ul>
+    </div>
+
+    <!--p class="pengurus-modal-note">
+      Data anggota dapat diganti pada bagian <strong>PENGURUS_DETAIL</strong> di script <code>index.html</code>.
+    </p-->
+  </div>
+</div>
+
+<!-- PROGRAM KERJA & AGENDA -->
+<section id="program">
+  <div class="container">
+    <div class="section-label">Rencana & Kegiatan</div>
+    <h2 class="section-title">Program Kerja &amp; <span>Agenda</span></h2>
+    <div class="divider"></div>
+
+    <div class="program-tabs">
+      <button class="tab-btn active" onclick="switchTab('program-kerja', this)">📋 Program Kerja</button>
+      <button class="tab-btn" onclick="switchTab('agenda', this)">🗓️ Agenda Rutin</button>
+    </div>
+
+    <!-- TAB: Program Kerja -->
+    <div class="tab-content active" id="tab-program-kerja">
+      <div class="program-grid fade-in">
+        <div class="program-card">
+          <div class="program-icon">🧹</div>
+          <div class="program-body">
+            <h4>Kerja Bakti Lingkungan</h4>
+            <p>Membersihkan saluran air, jalan lingkungan, dan fasilitas umum bersama seluruh warga RT.</p>
+            <span class="program-frek">📅 Setiap Minggu Pertama</span>
+          </div>
+        </div>
+        <div class="program-card">
+          <div class="program-icon">🌙</div>
+          <div class="program-body">
+            <h4>Pengajian Malam Jum'at</h4>
+            <p>Kegiatan keagamaan rutin untuk mempererat tali silaturahmi dan meningkatkan keimanan warga.</p>
+            <span class="program-frek">📅 Setiap Malam Jum'at</span>
+          </div>
+        </div>
+        <div class="program-card">
+          <div class="program-icon">🛡️</div>
+          <div class="program-body">
+            <h4>Siskamling (Ronda)</h4>
+            <p>Sistem keamanan lingkungan bergilir untuk menjaga keamanan dan ketertiban warga RT.</p>
+            <span class="program-frek">📅 Setiap Malam Minggu</span>
+          </div>
+        </div>
+        <div class="program-card">
+          <div class="program-icon">💊</div>
+          <div class="program-body">
+            <h4>Posyandu Balita &amp; Lansia</h4>
+            <p>Pelayanan kesehatan rutin untuk balita dan lansia bersama kader kesehatan kelurahan.</p>
+            <span class="program-frek">📅 Setiap Bulan</span>
+          </div>
+        </div>
+        <div class="program-card">
+          <div class="program-icon">🎉</div>
+          <div class="program-body">
+            <h4>HUT RI &amp; Hari Besar</h4>
+            <p>Peringatan hari kemerdekaan dan hari besar nasional dengan berbagai lomba dan hiburan warga.</p>
+            <span class="program-frek">📅 Tahunan</span>
+          </div>
+        </div>
+        <!--div class="program-card">
+          <div class="program-icon">📚</div>
+          <div class="program-body">
+            <h4>Bimbel &amp; Pendidikan Anak</h4>
+            <p>Program bimbingan belajar gratis untuk anak-anak warga RT yang membutuhkan dukungan akademik.</p>
+            <span class="program-frek">📅 Mingguan</span>
+          </div>
+        </div-->
+        <div class="program-card">
+          <div class="program-icon">🌱</div>
+          <div class="program-body">
+            <h4>Penghijauan Lingkungan</h4>
+            <p>Penanaman pohon dan tanaman produktif di lingkungan RT untuk menjaga kesejukan dan keindahan.</p>
+            <span class="program-frek">📅 Kuartalan</span>
+          </div>
+        </div>
+        <div class="program-card">
+          <div class="program-icon">📊</div>
+          <div class="program-body">
+            <h4>Musyawarah Warga</h4>
+            <p>Forum diskusi terbuka untuk membahas isu lingkungan, laporan keuangan, dan program ke depan.</p>
+            <span class="program-frek">📅 Setiap Minggu Kedua</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB: Agenda -->
+    <div class="tab-content" id="tab-agenda">
+      <div class="agenda-list fade-in">
+        <div class="agenda-item">
+          <div class="agenda-date" style="background:var(--hijau);">
+            <div class="day">06</div><div class="month">Jul</div>
+          </div>
+          <div class="agenda-info">
+            <h4>🧹 Kerja Bakti Bulanan</h4>
+            <p>Pembersihan saluran drainase &amp; jalan lingkungan RT 005</p>
+          </div>
+          <div class="agenda-badge">Rutin</div>
+        </div>
+        <div class="agenda-item">
+          <div class="agenda-date" style="background:var(--biru);">
+            <div class="day">10</div><div class="month">Jul</div>
+          </div>
+          <div class="agenda-info">
+            <h4>🌙 Pengajian Malam Jum'at</h4>
+            <p>Mushola Al-Ikhlas RT 005, pukul 19.30 WIB</p>
+          </div>
+          <div class="agenda-badge" style="color:var(--biru);background:rgba(26,35,126,0.1);">Rutin</div>
+        </div>
+        <div class="agenda-item">
+          <div class="agenda-date" style="background:var(--oranye);">
+            <div class="day">15</div><div class="month">Jul</div>
+          </div>
+          <div class="agenda-info">
+            <h4>💊 Posyandu Balita</h4>
+            <p>Pemeriksaan rutin anak balita bersama kader kesehatan Kelurahan Cipadu</p>
+          </div>
+          <div class="agenda-badge" style="color:var(--oranye);background:rgba(230,92,0,0.1);">Bulanan</div>
+        </div>
+        <div class="agenda-item">
+          <div class="agenda-date" style="background:#5d4037;">
+            <div class="day">17</div><div class="month">Jul</div>
+          </div>
+          <div class="agenda-info">
+            <h4>📊 Rapat Pengurus RT</h4>
+            <p>Evaluasi program bulanan dan perencanaan kegiatan bulan depan</p>
+          </div>
+          <div class="agenda-badge" style="color:#5d4037;background:rgba(93,64,55,0.1);">Internal</div>
+        </div>
+        <div class="agenda-item">
+          <div class="agenda-date" style="background:var(--hijau-muda);">
+            <div class="day">17</div><div class="month">Agt</div>
+          </div>
+          <div class="agenda-info">
+            <h4>🎉 Peringatan HUT RI ke-80</h4>
+            <p>Perlombaan 17-an, parade bendera, dan malam hiburan warga RT 005</p>
+          </div>
+          <div class="agenda-badge">Tahunan</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOTO KEGIATAN -->
+<section id="foto">
+  <div class="container">
+    <div class="section-label">Dokumentasi</div>
+    <h2 class="section-title">Foto <span style="color:var(--oranye-muda);">Kegiatan Warga</span></h2>
+    <p class="section-sub">Momen-momen berharga kebersamaan warga RT 005 RW 01 dalam berbagai kegiatan.</p>
+    <div class="divider"></div>
+
+    <!-- TAB PILIH ALBUM -->
+    <div id="albumTabs" style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px;"></div>
+
+    <!-- SLIDESHOW -->
+    <div class="slideshow-container fade-in" id="slideshowWrap">
+      <!-- Loading state -->
+      <div id="slideshowLoading" style="height:440px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;color:rgba(255,255,255,0.5);">
+        <div style="font-size:2.8rem;animation:spin 1s linear infinite;display:inline-block;">⟳</div>
+        <p style="font-size:0.9rem;">Memuat foto dari Google Drive…</p>
+      </div>
+      <!-- Slideshow inner (diisi JS) -->
+      <div class="slideshow-inner" id="slideshowInner" style="display:none;"></div>
+      <button class="slide-prev" id="btnPrev" onclick="moveSlide(-1)" style="display:none;">‹</button>
+      <button class="slide-next" id="btnNext" onclick="moveSlide(1)"  style="display:none;">›</button>
+    </div>
+
+    <!-- Dots + keterangan foto -->
+    <div class="slide-dots" id="slideDots"></div>
+    <div id="slideCaption" style="text-align:center;margin-top:10px;color:rgba(255,255,255,0.55);font-size:0.82rem;min-height:18px;"></div>
+
+    <!-- Lightbox -->
+    <div id="lightbox" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.93);z-index:9999;align-items:center;justify-content:center;">
+      <button onclick="closeLightbox()" style="position:absolute;top:18px;right:22px;background:rgba(255,255,255,0.12);border:none;color:#fff;font-size:1.6rem;width:42px;height:42px;border-radius:50%;cursor:pointer;">✕</button>
+      <button onclick="lbMove(-1)" style="position:absolute;left:14px;top:50%;transform:translateY(-50%);background:rgba(255,255,255,0.12);border:none;color:#fff;font-size:2rem;width:50px;height:50px;border-radius:50%;cursor:pointer;">‹</button>
+      <button onclick="lbMove(1)"  style="position:absolute;right:14px;top:50%;transform:translateY(-50%);background:rgba(255,255,255,0.12);border:none;color:#fff;font-size:2rem;width:50px;height:50px;border-radius:50%;cursor:pointer;">›</button>
+      <img id="lbImg" src="" alt="" style="max-width:92vw;max-height:85vh;object-fit:contain;border-radius:10px;box-shadow:0 8px 48px rgba(0,0,0,0.7);" />
+    </div>
+
+    <!--div class="gdrive-info" style="margin-top:20px;">
+      📁 <strong style="color:rgba(255,255,255,0.85);">Menambah album baru:</strong>
+      Buat folder Google Drive → atur akses publik → salin ID dari URL →
+      tambahkan ke array <code>ALBUMS</code> di bagian script <code>index.html</code>.<br>
+      <a href="https://drive.google.com" target="_blank">→ Buka Google Drive</a>
+    </div-->
+  </div>
+</section>
+
+<!-- LAYANAN DIGITAL -->
+<section id="layanan">
+  <div class="container">
+    <div class="section-label">Digitalisasi RT</div>
+    <h2 class="section-title">Layanan <span>Digital</span></h2>
+    <p class="section-sub">Akses mudah informasi dan layanan RT 005 langsung dari genggaman tangan Anda.</p>
+    <div class="divider"></div>
+
+    <div class="layanan-grid fade-in">
+      <!-- Buku KAS & RMD -->
+      <a class="layanan-card kas" href="https://rt005rw01cipadu.github.io/buku_kas_rmd/" target="_blank" rel="noopener">
+        <div class="layanan-header">
+          <div class="layanan-emoji">📒</div>
+          <div class="layanan-title">Buku KAS &amp; RMD</div>
+          <div class="layanan-desc">Laporan keuangan RT yang transparan dan dapat diakses semua warga kapan saja.</div>
+        </div>
+        <div class="layanan-body">
+          <p>Rekap pemasukan, pengeluaran, dan saldo kas RT secara real-time &amp; terbuka untuk publik.</p>
+          <div class="layanan-cta">Buka Buku KAS →</div>
+        </div>
+      </a>
+
+      <!-- Iuran Bulanan -->
+      <a class="layanan-card iuran" href="https://andangchris.github.io/sikas-app/" target="_blank" rel="noopener">
+        <div class="layanan-header">
+          <div class="layanan-emoji">💳</div>
+          <div class="layanan-title">Iuran Bulanan Warga</div>
+          <div class="layanan-desc">Cek status pembayaran iuran bulanan dan rekap setoran per kepala keluarga.</div>
+        </div>
+        <div class="layanan-body">
+          <p>Pantau tagihan, histori pembayaran, dan status iuran keamanan maupun kebersihan lingkungan.</p>
+          <div class="layanan-cta" style="color:var(--biru)">Cek Iuran →</div>
+        </div>
+      </a>
+
+      <!-- Info Warga -->
+      <div class="layanan-card info" style="cursor:default;">
+        <div class="layanan-header">
+          <div class="layanan-emoji">📋</div>
+          <div class="layanan-title">Surat Pengantar RT</div>
+          <div class="layanan-desc">Panduan pembuatan surat keterangan dan pengantar dari RT untuk keperluan administrasi.</div>
+        </div>
+        <div class="layanan-body">
+          <p>KTP, KK, SKCK, Surat Domisili, dan dokumen lain. Hubungi pengurus RT untuk proses lebih lanjut.</p>
+          <div class="layanan-cta" style="color:#5d4037;" onclick="document.getElementById('kontak').scrollIntoView({behavior:'smooth'})">Hubungi Pengurus →</div>
+        </div>
+      </div>
+
+      <!-- Kontak Darurat -->
+      <div class="layanan-card kontak" style="cursor:default;">
+        <div class="layanan-header">
+          <div class="layanan-emoji">🚨</div>
+          <div class="layanan-title">Kontak Darurat &amp; Penting</div>
+          <div class="layanan-desc">Nomor penting yang perlu diketahui seluruh warga RT 005 RW 01.</div>
+        </div>
+        <div class="layanan-body">
+          <p>🚑 IGD Puskesmas · 🚒 Damkar · 🚓 Polsek · 🏥 BPJS · 📞 Kelurahan Cipadu</p>
+          <div class="layanan-cta" onclick="document.getElementById('kontak').scrollIntoView({behavior:'smooth'})">Lihat Kontak →</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DATA WARGA -->
+<section id="info">
+  <div class="container">
+    <div class="section-label">Data Lingkungan</div>
+    <h2 class="section-title">Informasi <span>Warga RT 005</span></h2>
+    <div class="divider"></div>
+    <div class="info-grid fade-in">
+      <div class="info-card">
+        <div class="info-num">55+</div>
+        <div class="info-label">🏠 Kepala Keluarga</div>
+      </div>
+      <!--div class="info-card">
+        <div class="info-num">320</div>
+        <div class="info-label">👥 Total Warga</div>
+      </div-->
+      <div class="info-card">
+        <div class="info-num">20+</div>
+        <div class="info-label">👨‍💼 Pengurus Aktif</div>
+      </div>
+      <div class="info-card">
+        <div class="info-num">7</div>
+        <div class="info-label">📋 Program Kerja</div>
+      </div>
+    </div>
+    <!--p style="margin-top:16px;color:var(--teks-ringan);font-size:0.84rem;text-align:center;">
+      💡 Data dapat diperbarui via Google Sheet. <a href="#" style="color:var(--hijau);font-weight:600;">Lihat panduan →</a>
+    </p-->
+  </div>
+</section>
+
+<!-- KONTAK -->
+<section id="kontak">
+  <div class="container">
+    <div class="section-label">Hubungi Kami</div>
+    <h2 class="section-title">Kontak &amp; <span style="color:var(--oranye-muda);">Lokasi</span></h2>
+    <p class="section-sub">Butuh bantuan atau ada pertanyaan? Pengurus RT siap membantu Anda.</p>
+    <div class="divider"></div>
+    <div class="kontak-grid fade-in">
+      <div class="kontak-card">
+        <div class="kontak-icon">📍</div>
+        <div>
+          <h4>Alamat RT</h4>
+          <p>RT 005 RW 01, Kelurahan Cipadu<br>Kecamatan Larangan, Kota Tangerang<br>Banten 15155</p>
+        </div>
+      </div>
+      <div class="kontak-card">
+        <div class="kontak-icon">📧</div>
+        <div>
+          <h4>Alamat Email</h4>
+          <p>Email Pengurus : <strong style="color:#fff;">rt005rw01cipadu@gmail.com</strong></p>
+        </div>
+      </div>
+      <div class="kontak-card">
+        <div class="kontak-icon">🏥</div>
+        <div>
+          <h4>Kontak Darurat</h4>
+          <p>🚑 IGD/Ambulan: <strong style="color:#fff;">119</strong><br>🚒 Pemadam: <strong style="color:#fff;">113</strong><br>🚓 Polisi: <strong style="color:#fff;">110</strong></p>
+        </div>
+      </div>
+      <div class="kontak-card">
+        <div class="kontak-icon">🏛️</div>
+        <div>
+          <h4>Kelurahan Cipadu</h4>
+          <p>Jl. Cipadu Jaya, Kec. Larangan<br>Kota Tangerang, Banten<br>📞 (021) xxx-xxxx</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Grup WA -->
+    <!--div style="margin-top:32px;text-align:center;">
+      <div style="background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);border-radius:14px;padding:28px 24px;max-width:480px;margin:0 auto;">
+        <div style="font-size:2.5rem;margin-bottom:12px;">💬</div>
+        <h3 style="color:#fff;font-family:'Poppins',sans-serif;font-weight:700;margin-bottom:8px;">Grup WhatsApp RT 005</h3>
+        <p style="color:rgba(255,255,255,0.75);font-size:0.9rem;line-height:1.6;margin-bottom:18px;">
+          Bergabunglah dengan grup WhatsApp RT untuk informasi terkini, pengumuman, dan diskusi warga.
+        </p>
+        <a href="https://chat.whatsapp.com/GANTI_DENGAN_LINK_GRUP" target="_blank"
+           style="display:inline-block;background:#25D366;color:#fff;text-decoration:none;padding:12px 28px;border-radius:100px;font-family:'Poppins',sans-serif;font-weight:700;font-size:0.92rem;">
+          📲 Gabung Grup WA
+        </a>
+      </div>
+    </div-->
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <img src="logo-rt.png" class="footer-logo" alt="Logo RT"
+       onerror="this.outerHTML='<div style=\'font-size:2.5rem;margin-bottom:12px;\'>🏘️</div>'" />
+  <div style="margin-bottom:8px;">
+    <strong>RT 005 RW 01 – Kelurahan Cipadu, Kec. Larangan, Kota Tangerang</strong>
+  </div>
+  <div style="margin-bottom:12px;">"Kampung Maju Bersama" — Bersatu, Gotong Royong, Sejahtera</div>
+  <div style="font-size:0.8rem;color:rgba(255,255,255,0.4);">
+    © 2025 RT 005 RW 01 Kelurahan Cipadu &nbsp;·&nbsp;
+    Dibuat dengan ❤️ untuk warga &nbsp;·&nbsp;
+    <!--a href="https://github.com/rt005rw01cipadu" target="_blank">GitHub</a-->
+  </div>
+</footer>
+
+<!-- BACK TO TOP -->
+<button class="back-top" id="backTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="Kembali ke atas">↑</button>
+
+<script>
+  // ══════════════════════════════════════════════════════════════
+  //  KONFIGURASI — Edit bagian ini untuk menambah/ubah album
+  // ══════════════════════════════════════════════════════════════
+  const GDRIVE_API_KEY = 'AIzaSyAWAobWwqGIfCj-QZbm39P6UlCqAgVSc3s';
+
+  const ALBUMS = [
+    { id: '1AYD0e5Rp_o2LZFpjf9vaEABaY1S3ng8z', label: 'Pertemuan Warga', icon: '🤝' },
+    { id: '1dPNhdOmof7aPYxDboEJxWKS_MauPqu-Z', label: 'Kerja Bakti',     icon: '🧹' },
+    { id: '1MhJ_lcfgiTbVA4EM9K0Mu3PbyMqfXnjN', label: 'Pengajian',       icon: '🌙' },
+    { id: '1-7sy7AoA87yDtvl6po6zvy0kDwxrCnQx', label: 'Jalan Santai',	  icon: '🤝' },
+    { id: '15ZaAdlkCeIE06Cgb3NiuiDJiEJ5RsVT6', label: 'Lomba HUT RI 80',	  icon: '🎉' }
+    // Tambah album baru di sini:
+    // , { id: 'ID_FOLDER_GDRIVE', label: 'Nama Album', icon: '🎉' }
+  ];
+  // ══════════════════════════════════════════════════════════════
+
+
+
+  // ── POPUP DETAIL PENGURUS ──
+  const PENGURUS_DETAIL = {
+    sekretaris: {
+      icon: '📝',
+      bidang: 'Sekretaris',
+      ketua: 'Djoko Supratman',
+      anggota: ['Anggota 1', 'Anggota 2']
+    },
+    pkk: {
+      icon: '👩‍💼',
+      bidang: 'Pemberdayaan Wanita & PKK',
+      ketua: 'Marningsih',
+      anggota: ['Riska (Wakil)', 'Fera (Sekretaris)', 'AnnaNoviansyah (Bendahara 1)', 'Suci (Bendahara 2)']
+    },
+    sosial: {
+      icon: '🤝',
+      bidang: 'Sosial & Kemasyarakatan',
+      ketua: 'Andang Chrisnandi',
+      anggota: ['Gunawan']
+    },
+    sarpras: {
+      icon: '🛠️',
+      bidang: 'Sarana Prasarana & Fasilitas',
+      ketua: 'M. Ilham',
+      anggota: ['Pujianto', 'Rusli', 'Bambang Maryanto', 'AndriLinda', 'Mujinah', 'Yani']
+    },
+    kebersihan: {
+      icon: '🌿',
+      bidang: 'Kebersihan & Lingkungan',
+      ketua: 'Iwan',
+      anggota: ['Amir', 'Siti Maesaroh', 'Masriyanah']
+    },
+    keamanan: {
+      icon: '🛡️',
+      bidang: 'Keamanan',
+      ketua: 'Arif Wiyah',
+      anggota: ['Handoko', 'Febri']
+    }
+  };
+
+  function openPengurusModal(key) {
+    const data = PENGURUS_DETAIL[key];
+    if (!data) return;
+
+    document.getElementById('modalIcon').textContent = data.icon;
+    document.getElementById('modalBidang').textContent = data.bidang;
+    document.getElementById('modalKetua').textContent = data.ketua;
+
+    const anggotaWrap = document.getElementById('modalAnggota');
+    anggotaWrap.innerHTML = '';
+    data.anggota.forEach(nama => {
+      const li = document.createElement('li');
+      li.textContent = nama;
+      anggotaWrap.appendChild(li);
+    });
+
+    const modal = document.getElementById('pengurusModal');
+    modal.classList.add('open');
+    modal.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closePengurusModal() {
+    const modal = document.getElementById('pengurusModal');
+    modal.classList.remove('open');
+    modal.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+  }
+
+  function handlePengurusCardKey(event, key) {
+    if (event.key === 'Enter' || event.key === ' ') {
+      event.preventDefault();
+      openPengurusModal(key);
+    }
+  }
+
+  document.getElementById('pengurusModal').addEventListener('click', function(e) {
+    if (e.target === this) closePengurusModal();
+  });
+
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape' && document.getElementById('pengurusModal').classList.contains('open')) {
+      closePengurusModal();
+    }
+  });
+
+  // ── HAMBURGER MENU ──
+  function toggleMenu() {
+    document.getElementById('mobileMenu').classList.toggle('open');
+  }
+  document.addEventListener('click', (e) => {
+    const menu = document.getElementById('mobileMenu');
+    const ham  = document.querySelector('.hamburger');
+    if (menu.classList.contains('open') && !menu.contains(e.target) && !ham.contains(e.target))
+      menu.classList.remove('open');
+  });
+
+  // ── PROGRAM TABS ──
+  function switchTab(tabId, btn) {
+    document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.getElementById('tab-' + tabId).classList.add('active');
+    btn.classList.add('active');
+  }
+
+  // ── BACK TO TOP ──
+  window.addEventListener('scroll', () => {
+    document.getElementById('backTop').classList.toggle('visible', window.scrollY > 400);
+  });
+
+  // ── SCROLL FADE-IN ──
+  const scrollObserver = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('visible'); scrollObserver.unobserve(e.target); }
+    });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.fade-in').forEach(el => scrollObserver.observe(el));
+
+  // ══════════════════════════════════════════════════════════════
+  //  GALERI FOTO — Google Drive API v3
+  // ══════════════════════════════════════════════════════════════
+  let currentSlide  = 0;
+  let autoPlay      = null;
+  let activeAlbum   = 0;
+  let albumCache    = {};   // { index: [ {id, name} ] }
+  let lbPhotos      = [];
+  let lbIdx         = 0;
+
+  // Tambahkan @keyframes spin ke head
+  const spinStyle = document.createElement('style');
+  spinStyle.textContent = `@keyframes spin { to { transform: rotate(360deg); } }`;
+  document.head.appendChild(spinStyle);
+
+  // ── Build tab buttons album ──
+  function buildAlbumTabs() {
+    const wrap = document.getElementById('albumTabs');
+    ALBUMS.forEach((a, i) => {
+      const btn = document.createElement('button');
+      btn.className = 'tab-btn' + (i === 0 ? ' active' : '');
+      btn.textContent = a.icon + ' ' + a.label;
+      btn.onclick = () => {
+        document.querySelectorAll('#albumTabs .tab-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        loadAlbum(i);
+      };
+      wrap.appendChild(btn);
+    });
+  }
+
+  // ── Fetch foto dari Google Drive API ──
+  async function loadAlbum(idx) {
+    activeAlbum = idx;
+
+    // Tampilkan loading
+    document.getElementById('slideshowLoading').style.display = 'flex';
+    document.getElementById('slideshowInner').style.display   = 'none';
+    document.getElementById('btnPrev').style.display          = 'none';
+    document.getElementById('btnNext').style.display          = 'none';
+    document.getElementById('slideDots').innerHTML            = '';
+    document.getElementById('slideCaption').textContent       = '';
+    clearInterval(autoPlay);
+
+    // Pakai cache jika sudah pernah dimuat
+    if (albumCache[idx]) {
+      renderSlideshow(albumCache[idx]);
+      return;
+    }
+
+    const folderId = ALBUMS[idx].id;
+    const fields   = encodeURIComponent('files(id,name,mimeType)');
+    const q        = encodeURIComponent(`'${folderId}' in parents and mimeType contains 'image/' and trashed=false`);
+    const url      = `https://www.googleapis.com/drive/v3/files?q=${q}&fields=${fields}&orderBy=name&pageSize=50&key=${GDRIVE_API_KEY}`;
+
+    try {
+      const res   = await fetch(url);
+      const data  = await res.json();
+
+      if (data.error) {
+        showFotoError(folderId, data.error.message);
+        return;
+      }
+
+      const photos = (data.files || []).filter(f => f.mimeType.startsWith('image/'));
+
+      if (photos.length === 0) {
+        showFotoError(folderId, 'Belum ada foto di album ini.');
+        return;
+      }
+
+      albumCache[idx] = photos;
+      renderSlideshow(photos);
+
+    } catch (err) {
+      showFotoError(folderId, 'Gagal memuat. Periksa koneksi internet.');
+    }
+  }
+
+  // ── Render slideshow dari array foto ──
+  function renderSlideshow(photos) {
+    const inner = document.getElementById('slideshowInner');
+    inner.innerHTML = '';
+    currentSlide = 0;
+
+    photos.forEach((photo, i) => {
+      const slide = document.createElement('div');
+      slide.className = 'slide';
+      slide.style.cursor = 'pointer';
+
+      // Gunakan thumbnail Google Drive (tidak perlu login)
+      const thumbUrl = `https://drive.google.com/thumbnail?id=${photo.id}&sz=w1200`;
+
+      slide.innerHTML = `
+        <img
+          src="${thumbUrl}"
+          alt="${photo.name}"
+          style="width:100%;height:100%;object-fit:cover;display:block;"
+          loading="${i === 0 ? 'eager' : 'lazy'}"
+          onerror="this.parentElement.innerHTML='<div class=slide-placeholder><div class=icon>🖼️</div><p style=color:rgba(255,255,255,0.5)>Gagal memuat foto</p></div>'"
+        />`;
+
+      // Klik → lightbox
+      slide.onclick = () => openLightbox(photos, i);
+      inner.appendChild(slide);
+    });
+
+    // Simpan untuk lightbox
+    lbPhotos = photos;
+
+    // Tampilkan slideshow
+    document.getElementById('slideshowLoading').style.display = 'none';
+    inner.style.display    = 'flex';
+    inner.style.transform  = 'translateX(0)';
+    document.getElementById('btnPrev').style.display = 'flex';
+    document.getElementById('btnNext').style.display = 'flex';
+
+    buildDots(photos.length);
+    updateCaption(photos, 0);
+    startAutoPlay(photos.length);
+  }
+
+  // ── Dots ──
+  function buildDots(total) {
+    const wrap = document.getElementById('slideDots');
+    wrap.innerHTML = '';
+    // Tampilkan maks 20 dots agar tidak penuh layar
+    const show = Math.min(total, 20);
+    for (let i = 0; i < show; i++) {
+      const d = document.createElement('div');
+      d.className = 'dot' + (i === 0 ? ' active' : '');
+      d.onclick = () => { clearInterval(autoPlay); goToSlide(i); startAutoPlay(total); };
+      wrap.appendChild(d);
+    }
+  }
+
+  function updateDots(idx, total) {
+    const dots = document.querySelectorAll('#slideDots .dot');
+    const show = Math.min(total, 20);
+    dots.forEach((d, i) => d.classList.toggle('active', i === (idx % show)));
+  }
+
+  function updateCaption(photos, idx) {
+    const el = document.getElementById('slideCaption');
+    const name = photos[idx]?.name?.replace(/\.[^.]+$/, '') || '';
+    el.textContent = `${name}  (${idx + 1} / ${photos.length})`;
+  }
+
+  // ── Navigasi slide ──
+  function goToSlide(n) {
+    const photos = albumCache[activeAlbum] || [];
+    if (!photos.length) return;
+    currentSlide = (n + photos.length) % photos.length;
+    document.getElementById('slideshowInner').style.transform = `translateX(-${currentSlide * 100}%)`;
+    updateDots(currentSlide, photos.length);
+    updateCaption(photos, currentSlide);
+  }
+
+  function moveSlide(dir) {
+    clearInterval(autoPlay);
+    goToSlide(currentSlide + dir);
+    startAutoPlay((albumCache[activeAlbum] || []).length);
+  }
+
+  function startAutoPlay(total) {
+    if (total < 2) return;
+    autoPlay = setInterval(() => goToSlide(currentSlide + 1), 4000);
+  }
+
+  // ── Error state ──
+  function showFotoError(folderId, msg) {
+    document.getElementById('slideshowLoading').style.display = 'none';
+    const inner = document.getElementById('slideshowInner');
+    inner.style.display = 'flex';
+    inner.innerHTML = `
+      <div class="slide">
+        <div class="slide-placeholder">
+          <div class="icon">⚠️</div>
+          <p style="color:rgba(255,255,255,0.6);max-width:300px;text-align:center;line-height:1.6;">
+            ${msg}<br><br>
+            <a href="https://drive.google.com/drive/folders/${folderId}" target="_blank"
+               style="color:var(--oranye-muda);font-weight:600;">→ Cek folder di Google Drive</a>
+          </p>
+        </div>
+      </div>`;
+  }
+
+  // ── Lightbox ──
+  function openLightbox(photos, idx) {
+    lbPhotos = photos;
+    lbIdx    = idx;
+    const lb = document.getElementById('lightbox');
+    lb.style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+    renderLightbox();
+  }
+  function closeLightbox() {
+    document.getElementById('lightbox').style.display = 'none';
+    document.body.style.overflow = '';
+  }
+  function lbMove(dir) {
+    lbIdx = (lbIdx + lbPhotos.length + dir) % lbPhotos.length;
+    renderLightbox();
+  }
+  function renderLightbox() {
+    document.getElementById('lbImg').src =
+      `https://drive.google.com/thumbnail?id=${lbPhotos[lbIdx].id}&sz=w1600`;
+  }
+  document.getElementById('lightbox').addEventListener('click', function(e) {
+    if (e.target === this) closeLightbox();
+  });
+  document.addEventListener('keydown', e => {
+    if (document.getElementById('lightbox').style.display === 'flex') {
+      if (e.key === 'ArrowRight') lbMove(1);
+      if (e.key === 'ArrowLeft')  lbMove(-1);
+      if (e.key === 'Escape')     closeLightbox();
+    }
+  });
+
+  // ── INIT ──
+  buildAlbumTabs();
+  loadAlbum(0);
+</script>
+
+</body>
+</html>
