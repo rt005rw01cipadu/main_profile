@@ -780,13 +780,13 @@ Create Date : 2026-06-24
 
     <!-- Baris 2: Wakil & Sekretaris -->
     <div class="struktur-grid fade-in">      
-      <div class="jabatan-card">
+      <div class="jabatan-card clickable" role="button" tabindex="0" onclick="openPengurusModal('sekretaris')" onkeydown="handlePengurusCardKey(event, 'sekretaris')" aria-label="Lihat detail Sekretaris">
         <div class="avatar">📝</div>
         <div class="jabatan-tag">Sekretaris</div>
         <h4>Djoko Supratman</h4>
         <!--div class="jabatan-phone">📱 08xx-xxxx-xxxx</div-->
       </div>
-      <div class="jabatan-card">
+      <div class="jabatan-card clickable" role="button" tabindex="0" onclick="openPengurusModal('bendahara')" onkeydown="handlePengurusCardKey(event, 'bendahara')" aria-label="Lihat detail Bendahara">
         <div class="avatar">💰</div>
         <div class="jabatan-tag">Bendahara</div>
         <h4>Tugino</h4>
@@ -822,7 +822,7 @@ Create Date : 2026-06-24
         <h4>Marningsih</h4>
         <!--div class="jabatan-phone">📱 08xx-xxxx-xxxx</div-->
       </div>
-	  <div class="jabatan-card">
+	  <div class="jabatan-card clickable" role="button" tabindex="0" onclick="openPengurusModal('koperasi')" onkeydown="handlePengurusCardKey(event, 'koperasi')" aria-label="Lihat detail Koperasi">
         <div class="avatar">💼</div>
         <div class="jabatan-tag">Koperasi</div>
         <h4>Noviansyah</h4>
@@ -1243,7 +1243,13 @@ Create Date : 2026-06-24
       icon: '📝',
       bidang: 'Sekretaris',
       ketua: 'Djoko Supratman',
-      anggota: ['Anggota 1', 'Anggota 2']
+      anggota: []
+    },
+    bendahara: {
+      icon: '💰',
+      bidang: 'Bendahara',
+      ketua: 'Tugino',
+      anggota: []
     },
     pkk: {
       icon: '👩‍💼',
@@ -1262,6 +1268,12 @@ Create Date : 2026-06-24
       bidang: 'Sarana Prasarana & Fasilitas',
       ketua: 'M. Ilham',
       anggota: ['Pujianto', 'Rusli', 'Bambang Maryanto', 'AndriLinda', 'Mujinah', 'Yani']
+    },
+    koperasi: {
+      icon: '💼',
+      bidang: 'Koperasi',
+      ketua: 'Noviansyah',
+      anggota: []
     },
     kebersihan: {
       icon: '🌿',
