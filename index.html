@@ -433,58 +433,195 @@ Create Date : 2026-06-24
       line-height: 1.55;
     }
 
-    /* ── PROGRAM KERJA & AGENDA ── */
+    /* ── KALENDER PROGRAM & KEGIATAN ── */
     #program { background: var(--abu); }
-    .program-tabs { display: flex; gap: 8px; margin-bottom: 28px; flex-wrap: wrap; }
     .tab-btn {
       padding: 8px 20px; border-radius: 100px; border: 2px solid var(--hijau);
       background: transparent; color: var(--hijau); font-family: 'Poppins', sans-serif;
       font-weight: 600; font-size: 0.88rem; cursor: pointer; transition: all 0.2s;
     }
     .tab-btn.active { background: var(--hijau); color: #fff; }
-    .tab-content { display: none; }
-    .tab-content.active { display: block; }
-    .program-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
-    .program-card {
-      background: #fff; border-radius: var(--radius);
-      padding: 24px 22px; box-shadow: var(--shadow);
-      display: flex; gap: 16px; align-items: flex-start;
-      transition: transform 0.2s;
-    }
-    .program-card:hover { transform: translateY(-3px); }
-    .program-icon {
-      width: 52px; height: 52px; border-radius: 12px; flex-shrink: 0;
-      background: linear-gradient(135deg, var(--hijau), var(--hijau-muda));
-      display: flex; align-items: center; justify-content: center; font-size: 1.5rem;
-    }
-    .program-body h4 {
-      font-family: 'Poppins', sans-serif; font-weight: 700; font-size: 1rem;
-      color: var(--teks); margin-bottom: 6px;
-    }
-    .program-body p { font-size: 0.88rem; color: var(--teks-ringan); line-height: 1.6; }
-    .program-frek {
-      display: inline-block; margin-top: 8px; background: rgba(26,122,60,0.1);
-      color: var(--hijau); font-size: 0.74rem; font-weight: 700;
-      padding: 2px 10px; border-radius: 100px;
-    }
 
-    .agenda-list { display: flex; flex-direction: column; gap: 16px; }
-    .agenda-item {
-      background: #fff; border-radius: var(--radius); padding: 20px 24px;
-      box-shadow: var(--shadow); display: flex; align-items: center; gap: 20px;
+    .kegiatan-intro {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 22px;
+      align-items: stretch;
+      margin-bottom: 26px;
     }
-    .agenda-date {
-      text-align: center; background: var(--hijau); color: #fff;
-      border-radius: 10px; padding: 10px 14px; flex-shrink: 0; min-width: 58px;
+    .kegiatan-intro-card,
+    .kegiatan-summary-card {
+      background: #fff;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(26,122,60,0.08);
     }
-    .agenda-date .day { font-family: 'Poppins', sans-serif; font-weight: 800; font-size: 1.5rem; line-height: 1; }
-    .agenda-date .month { font-size: 0.7rem; text-transform: uppercase; font-weight: 600; }
-    .agenda-info h4 { font-family: 'Poppins', sans-serif; font-weight: 700; font-size: 1rem; color: var(--teks); }
-    .agenda-info p { font-size: 0.85rem; color: var(--teks-ringan); margin-top: 3px; }
-    .agenda-badge {
-      margin-left: auto; flex-shrink: 0; padding: 4px 14px;
-      border-radius: 100px; font-size: 0.75rem; font-weight: 700;
-      background: rgba(26,122,60,0.12); color: var(--hijau);
+    .kegiatan-intro-card {
+      padding: 26px 24px;
+      border-left: 5px solid var(--hijau);
+    }
+    .kegiatan-intro-card h3 {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 800;
+      color: var(--teks);
+      font-size: 1.15rem;
+      margin-bottom: 10px;
+    }
+    .kegiatan-intro-card p {
+      color: var(--teks-ringan);
+      font-size: 0.95rem;
+      line-height: 1.75;
+    }
+    .kegiatan-summary-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+    .kegiatan-summary-card {
+      padding: 16px 16px;
+    }
+    .kegiatan-summary-card .summary-icon {
+      font-size: 1.65rem;
+      margin-bottom: 8px;
+    }
+    .kegiatan-summary-card h4 {
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.92rem;
+      font-weight: 800;
+      color: var(--teks);
+      margin-bottom: 4px;
+    }
+    .kegiatan-summary-card p {
+      color: var(--teks-ringan);
+      font-size: 0.8rem;
+      line-height: 1.5;
+    }
+    .agenda-graphic-note {
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 16px; flex-wrap: wrap;
+      margin: 10px 0 16px;
+      color: var(--teks-ringan); font-size: 0.9rem; line-height: 1.6;
+    }
+    .agenda-graphic-note strong {
+      display: block; color: var(--teks);
+      font-family: 'Poppins', sans-serif; font-size: 1rem; margin-bottom: 4px;
+    }
+    .agenda-scroll-hint {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(26,122,60,0.08); color: var(--hijau);
+      padding: 8px 14px; border-radius: 100px; font-size: 0.8rem; font-weight: 800;
+    }
+    .agenda-graphic-wrap {
+      background: #fff; border-radius: var(--radius);
+      box-shadow: var(--shadow); overflow: hidden;
+      border: 1px solid rgba(26,122,60,0.08);
+    }
+    .agenda-scroll {
+      overflow-x: auto; overflow-y: hidden;
+      padding-bottom: 4px;
+      scrollbar-width: thin;
+    }
+    .agenda-chart {
+      width: 100%; min-width: 1320px;
+      border-collapse: separate; border-spacing: 0;
+      font-size: 0.84rem; color: var(--teks);
+    }
+    .agenda-chart th,
+    .agenda-chart td {
+      border-right: 1px solid #dfe8df;
+      border-bottom: 1px solid #dfe8df;
+    }
+    .agenda-chart thead th {
+      background: #f8fbf8; text-align: center;
+      font-family: 'Poppins', sans-serif; font-weight: 800;
+      padding: 10px 6px;
+    }
+    .agenda-chart thead tr:first-child th {
+      border-top: 1px solid #dfe8df;
+    }
+    .agenda-chart thead th:first-child,
+    .agenda-chart tbody td:first-child {
+      border-left: 1px solid #dfe8df;
+    }
+    .agenda-chart .head-main {
+      background: linear-gradient(145deg, var(--hijau-gelap), var(--hijau));
+      color: #fff;
+      z-index: 6;
+    }
+    .agenda-chart .head-month {
+      color: var(--teks);
+      font-size: 0.86rem;
+      min-width: 112px;
+    }
+    .agenda-chart .head-week {
+      color: var(--teks-ringan); font-size: 0.72rem;
+      width: 28px; min-width: 28px; padding: 8px 0;
+      background: #fbfdfb;
+    }
+    .agenda-chart .sticky-no,
+    .agenda-chart .sticky-kegiatan {
+      position: sticky; background: #fff;
+    }
+    .agenda-chart .sticky-no {
+      left: 0; z-index: 5; width: 56px; min-width: 56px; text-align: center;
+      font-weight: 800;
+    }
+    .agenda-chart .sticky-kegiatan {
+      left: 56px; z-index: 4; min-width: 240px; width: 240px;
+    }
+    .agenda-chart tbody tr:nth-child(odd) td.sticky-no,
+    .agenda-chart tbody tr:nth-child(odd) td.sticky-kegiatan {
+      background: #fcfefc;
+    }
+    .agenda-chart tbody tr:hover td {
+      background: #f6fbf6;
+    }
+    .agenda-chart tbody tr:hover td.agenda-active {
+      filter: brightness(0.96);
+    }
+    .agenda-chart tbody td {
+      height: 34px;
+      background: #fff;
+    }
+    .agenda-chart .agenda-kegiatan-cell {
+      padding: 10px 12px;
+    }
+    .agenda-kegiatan-wrap {
+      display: flex; align-items: center; gap: 10px;
+      font-weight: 800;
+    }
+    .agenda-color-dot {
+      width: 12px; height: 12px; border-radius: 3px; flex-shrink: 0;
+      box-shadow: inset 0 0 0 1px rgba(0,0,0,0.08);
+    }
+    .agenda-week-cell {
+      width: 28px; min-width: 28px;
+      background: #fff;
+    }
+    .agenda-active {
+      background: var(--cell-color, var(--hijau-muda)) !important;
+    }
+    .agenda-legend-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 14px; margin-top: 18px;
+    }
+    .agenda-legend-card {
+      display: flex; align-items: flex-start; gap: 12px;
+      background: #fff; border-radius: 12px;
+      padding: 14px 16px; box-shadow: var(--shadow);
+      border: 1px solid rgba(26,122,60,0.08);
+    }
+    .agenda-legend-swatch {
+      width: 16px; height: 16px; border-radius: 4px;
+      flex-shrink: 0; margin-top: 3px;
+      box-shadow: inset 0 0 0 1px rgba(0,0,0,0.1);
+    }
+    .agenda-legend-card h4 {
+      font-family: 'Poppins', sans-serif; font-size: 0.92rem;
+      font-weight: 800; color: var(--teks); margin-bottom: 4px;
+    }
+    .agenda-legend-card p {
+      font-size: 0.82rem; line-height: 1.55; color: var(--teks-ringan);
     }
 
     /* ── FOTO KEGIATAN ── */
@@ -640,10 +777,16 @@ Create Date : 2026-06-24
       section { padding: 60px 18px; }
       .agenda-item { flex-wrap: wrap; }
       .agenda-badge { margin-left: 0; }
+      .kegiatan-intro { grid-template-columns: 1fr; }
+      .agenda-chart { min-width: 1160px; }
+      .agenda-chart .sticky-kegiatan { min-width: 190px; width: 190px; }
+      .agenda-legend-grid { grid-template-columns: 1fr; }
     }
     @media (max-width: 480px) {
       .layanan-grid { grid-template-columns: 1fr; }
       .info-grid { grid-template-columns: 1fr 1fr; }
+      .kegiatan-summary-grid { grid-template-columns: 1fr; }
+      .agenda-scroll-hint { width: 100%; justify-content: center; }
     }
 
     /* ── ANIMATION ON SCROLL ── */
@@ -662,7 +805,7 @@ Create Date : 2026-06-24
   <div class="nav-links">
     <a href="#visi-misi">Visi &amp; Misi</a>
     <a href="#struktur">Pengurus</a>
-    <a href="#program">Program</a>
+    <a href="#program">Kegiatan</a>
     <a href="#foto">Kegiatan</a>
     <a href="#layanan">Layanan</a>
     <a href="#kontak">Kontak</a>
@@ -676,7 +819,7 @@ Create Date : 2026-06-24
 <div class="mobile-menu" id="mobileMenu">
   <a href="#visi-misi" onclick="toggleMenu()">🎯 Visi &amp; Misi</a>
   <a href="#struktur" onclick="toggleMenu()">👥 Pengurus RT</a>
-  <a href="#program" onclick="toggleMenu()">📋 Program Kerja</a>
+  <a href="#program" onclick="toggleMenu()">📅 Kalender Kegiatan</a>
   <a href="#foto" onclick="toggleMenu()">📸 Foto Kegiatan</a>
   <a href="#layanan" onclick="toggleMenu()">💻 Layanan Digital</a>
   <a href="#kontak" onclick="toggleMenu()">📞 Kontak</a>
@@ -707,7 +850,7 @@ Create Date : 2026-06-24
   <p>Bersama membangun kampung yang maju, transparan, dan berdaya melalui semangat gotong royong dan digitalisasi.</p>
   <div class="hero-btns">
     <a href="#layanan" class="btn-primary">📊 Layanan Digital</a>
-    <a href="#program" class="btn-outline">📋 Program Kerja</a>
+    <a href="#program" class="btn-outline">📅 Kalender Kegiatan</a>
   </div>
   <div class="hero-stats">
     <div class="stat">
@@ -719,8 +862,8 @@ Create Date : 2026-06-24
       <div class="stat-label">Total Warga</div>
     </div-->
     <div class="stat">
-      <div class="stat-num" id="cntProgram">7</div>
-      <div class="stat-label">Program Kerja</div>
+      <div class="stat-num" id="cntProgram">10+</div>
+      <div class="stat-label">Kegiatan Utama</div>
     </div>
     <div class="stat">
       <div class="stat-num">2026</div>
@@ -866,143 +1009,60 @@ Create Date : 2026-06-24
   </div>
 </div>
 
-<!-- PROGRAM KERJA & AGENDA -->
+<!-- KALENDER PROGRAM & KEGIATAN -->
 <section id="program">
   <div class="container">
-    <div class="section-label">Rencana & Kegiatan</div>
-    <h2 class="section-title">Program Kerja &amp; <span>Agenda</span></h2>
+    <div class="section-label">Rencana Tahunan</div>
+    <h2 class="section-title">Kalender <span>Program &amp; Kegiatan RT</span></h2>
+    <!--p class="section-sub">Program kerja RT ditampilkan dalam bentuk kalender kegiatan agar warga dapat melihat jenis kegiatan, pola pelaksanaan, dan jadwalnya dalam satu tampilan.</p-->
     <div class="divider"></div>
 
-    <div class="program-tabs">
-      <button class="tab-btn active" onclick="switchTab('program-kerja', this)">📋 Program Kerja</button>
-      <button class="tab-btn" onclick="switchTab('agenda', this)">🗓️ Agenda Rutin</button>
-    </div>
-
-    <!-- TAB: Program Kerja -->
-    <div class="tab-content active" id="tab-program-kerja">
-      <div class="program-grid fade-in">
-        <div class="program-card">
-          <div class="program-icon">🧹</div>
-          <div class="program-body">
-            <h4>Kerja Bakti Lingkungan</h4>
-            <p>Membersihkan saluran air, jalan lingkungan, dan fasilitas umum bersama seluruh warga RT.</p>
-            <span class="program-frek">📅 Setiap Minggu Pertama</span>
-          </div>
+    <div class="kegiatan-intro fade-in">
+      <!--div class="kegiatan-intro-card">
+        <h3>Program kerja dibuat sederhana dan langsung berbasis jadwal</h3>
+        <p>
+          Bagian ini menggabungkan program kerja dan agenda rutin. Program kerja menjelaskan kegiatan utama RT, sedangkan kalender menunjukkan waktu pelaksanaannya. Dengan format ini, informasi tidak berulang dan warga lebih mudah mengetahui kegiatan yang berjalan sepanjang tahun.
+        </p>
+      </div-->
+      <div class="kegiatan-summary-grid">
+        <div class="kegiatan-summary-card">
+          <div class="summary-icon">🔁</div>
+          <h4>Kegiatan Mingguan</h4>
+          <p>Yasinan, Jum'at Bersih, dan ronda lingkungan.</p>
         </div>
-        <div class="program-card">
-          <div class="program-icon">🌙</div>
-          <div class="program-body">
-            <h4>Pengajian Malam Jum'at</h4>
-            <p>Kegiatan keagamaan rutin untuk mempererat tali silaturahmi dan meningkatkan keimanan warga.</p>
-            <span class="program-frek">📅 Setiap Malam Jum'at</span>
-          </div>
+        <div class="kegiatan-summary-card">
+          <div class="summary-icon">📅</div>
+          <h4>Kegiatan Bulanan</h4>
+          <p>Kerja bakti, temu warga, PKK, dan kolektor iuran.</p>
         </div>
-        <div class="program-card">
-          <div class="program-icon">🛡️</div>
-          <div class="program-body">
-            <h4>Siskamling (Ronda)</h4>
-            <p>Sistem keamanan lingkungan bergilir untuk menjaga keamanan dan ketertiban warga RT.</p>
-            <span class="program-frek">📅 Setiap Malam Minggu</span>
-          </div>
+        <div class="kegiatan-summary-card">
+          <div class="summary-icon">🎉</div>
+          <h4>Kegiatan Tahunan</h4>
+          <p>17 Agustusan, Muharam, halal bihalal, dan qurban.</p>
         </div>
-        <div class="program-card">
-          <div class="program-icon">💊</div>
-          <div class="program-body">
-            <h4>Posyandu Balita &amp; Lansia</h4>
-            <p>Pelayanan kesehatan rutin untuk balita dan lansia bersama kader kesehatan kelurahan.</p>
-            <span class="program-frek">📅 Setiap Bulan</span>
-          </div>
-        </div>
-        <div class="program-card">
-          <div class="program-icon">🎉</div>
-          <div class="program-body">
-            <h4>HUT RI &amp; Hari Besar</h4>
-            <p>Peringatan hari kemerdekaan dan hari besar nasional dengan berbagai lomba dan hiburan warga.</p>
-            <span class="program-frek">📅 Tahunan</span>
-          </div>
-        </div>
-        <!--div class="program-card">
-          <div class="program-icon">📚</div>
-          <div class="program-body">
-            <h4>Bimbel &amp; Pendidikan Anak</h4>
-            <p>Program bimbingan belajar gratis untuk anak-anak warga RT yang membutuhkan dukungan akademik.</p>
-            <span class="program-frek">📅 Mingguan</span>
-          </div>
-        </div-->
-        <div class="program-card">
-          <div class="program-icon">🌱</div>
-          <div class="program-body">
-            <h4>Penghijauan Lingkungan</h4>
-            <p>Penanaman pohon dan tanaman produktif di lingkungan RT untuk menjaga kesejukan dan keindahan.</p>
-            <span class="program-frek">📅 Kuartalan</span>
-          </div>
-        </div>
-        <div class="program-card">
-          <div class="program-icon">📊</div>
-          <div class="program-body">
-            <h4>Musyawarah Warga</h4>
-            <p>Forum diskusi terbuka untuk membahas isu lingkungan, laporan keuangan, dan program ke depan.</p>
-            <span class="program-frek">📅 Setiap Minggu Kedua</span>
-          </div>
+        <div class="kegiatan-summary-card">
+          <div class="summary-icon">🤝</div>
+          <h4>Gotong Royong</h4>
+          <p>Semua kegiatan diarahkan untuk kebersamaan warga.</p>
         </div>
       </div>
     </div>
 
-    <!-- TAB: Agenda -->
-    <div class="tab-content" id="tab-agenda">
-      <div class="agenda-list fade-in">
-        <div class="agenda-item">
-          <div class="agenda-date" style="background:var(--hijau);">
-            <div class="day">06</div><div class="month">Jul</div>
-          </div>
-          <div class="agenda-info">
-            <h4>🧹 Kerja Bakti Bulanan</h4>
-            <p>Pembersihan saluran drainase &amp; jalan lingkungan RT 005</p>
-          </div>
-          <div class="agenda-badge">Rutin</div>
-        </div>
-        <div class="agenda-item">
-          <div class="agenda-date" style="background:var(--biru);">
-            <div class="day">10</div><div class="month">Jul</div>
-          </div>
-          <div class="agenda-info">
-            <h4>🌙 Pengajian Malam Jum'at</h4>
-            <p>Mushola Al-Ikhlas RT 005, pukul 19.30 WIB</p>
-          </div>
-          <div class="agenda-badge" style="color:var(--biru);background:rgba(26,35,126,0.1);">Rutin</div>
-        </div>
-        <div class="agenda-item">
-          <div class="agenda-date" style="background:var(--oranye);">
-            <div class="day">15</div><div class="month">Jul</div>
-          </div>
-          <div class="agenda-info">
-            <h4>💊 Posyandu Balita</h4>
-            <p>Pemeriksaan rutin anak balita bersama kader kesehatan Kelurahan Cipadu</p>
-          </div>
-          <div class="agenda-badge" style="color:var(--oranye);background:rgba(230,92,0,0.1);">Bulanan</div>
-        </div>
-        <div class="agenda-item">
-          <div class="agenda-date" style="background:#5d4037;">
-            <div class="day">17</div><div class="month">Jul</div>
-          </div>
-          <div class="agenda-info">
-            <h4>📊 Rapat Pengurus RT</h4>
-            <p>Evaluasi program bulanan dan perencanaan kegiatan bulan depan</p>
-          </div>
-          <div class="agenda-badge" style="color:#5d4037;background:rgba(93,64,55,0.1);">Internal</div>
-        </div>
-        <div class="agenda-item">
-          <div class="agenda-date" style="background:var(--hijau-muda);">
-            <div class="day">17</div><div class="month">Agt</div>
-          </div>
-          <div class="agenda-info">
-            <h4>🎉 Peringatan HUT RI ke-80</h4>
-            <p>Perlombaan 17-an, parade bendera, dan malam hiburan warga RT 005</p>
-          </div>
-          <div class="agenda-badge">Tahunan</div>
-        </div>
+    <div class="agenda-graphic-note fade-in">
+      <div>
+        <strong>Grafik Jadwal Kegiatan 2026–2027</strong>
+        Warna pada tabel menunjukkan waktu pelaksanaan kegiatan berdasarkan bulan dan minggu.
+      </div>
+      <div class="agenda-scroll-hint">↔ Geser ke samping untuk melihat seluruh bulan</div>
+    </div>
+
+    <div class="agenda-graphic-wrap fade-in">
+      <div class="agenda-scroll">
+        <table class="agenda-chart" id="agendaChart"></table>
       </div>
     </div>
+
+    <div class="agenda-legend-grid fade-in" id="agendaLegend"></div>
   </div>
 </section>
 
@@ -1081,7 +1141,7 @@ Create Date : 2026-06-24
           <div class="layanan-desc">Cek status pembayaran iuran bulanan dan rekap setoran per kepala keluarga.</div>
         </div>
         <div class="layanan-body">
-          <p>Pantau tagihan, histori pembayaran, dan status iuran keamanan maupun kebersihan lingkungan.</p>
+          <p>Pantau tagihan, histori pembayaran iuran Kas bulanan, Piranti RMD, Konsumsi pertemuan, dan Dana 17an.</p>
           <div class="layanan-cta" style="color:var(--biru)">Cek Iuran →</div>
         </div>
       </a>
@@ -1135,8 +1195,8 @@ Create Date : 2026-06-24
         <div class="info-label">👨‍💼 Pengurus Aktif</div>
       </div>
       <div class="info-card">
-        <div class="info-num">7</div>
-        <div class="info-label">📋 Program Kerja</div>
+        <div class="info-num">10+</div>
+        <div class="info-label">📅 Kegiatan Utama</div>
       </div>
     </div>
     <!--p style="margin-top:16px;color:var(--teks-ringan);font-size:0.84rem;text-align:center;">
@@ -1352,6 +1412,151 @@ Create Date : 2026-06-24
     document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
     document.getElementById('tab-' + tabId).classList.add('active');
     btn.classList.add('active');
+  }
+
+  // ── GRAFIK KALENDER PROGRAM & KEGIATAN ──
+  const AGENDA_MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'Mei', 'Jun', 'Jul', 'Agt', 'Sep', 'Okt', 'Nov', 'Des'];
+  const AGENDA_WEEKS  = ['I', 'II', 'III', 'IV'];
+  const ALL_WEEKS     = Array.from({ length: 48 }, (_, i) => i);
+
+  const AGENDA_DATA = [
+    {
+      no: 1,
+      name: 'YASINAN',
+      color: '#dfe3e8',
+      weeks: ALL_WEEKS,
+      note: "Yasinan dilaksanakan setiap malam Jum'at sebagai kegiatan keagamaan dan silaturahmi warga."
+    },
+    {
+      no: 2,
+      name: "JUM'AT BERSIH",
+      color: '#c7dcf4',
+      weeks: ALL_WEEKS,
+      note: "Jum'at Bersih dilaksanakan setiap Jum'at pagi untuk menjaga kebersihan lingkungan."
+    },
+    {
+      no: 3,
+      name: 'KERJA BAKTI',
+      color: '#efc3a6',
+      weeks: [0, 4, 8, 12, 16, 20, 24, 28, 32, 36, 40, 44],
+      note: 'Kerja bakti dilaksanakan pada Minggu Pertama setiap bulan.'
+    },
+    {
+      no: 4,
+      name: 'TEMU WARGA',
+      color: '#8fda90',
+      weeks: [1, 5, 9, 13, 17, 21, 25, 29, 33, 37, 41, 45],
+      note: 'Temu warga dilaksanakan pada malam Minggu Kedua setiap bulan.'
+    },
+    {
+      no: 5,
+      name: '17 AGUSTUSAN',
+      color: '#d9a5d7',
+      weeks: [30],
+      note: 'Kegiatan 17 Agustusan dilaksanakan pada Minggu Ketiga bulan Agustus.'
+    },
+    {
+      no: 6,
+      name: 'MUHARAM',
+      color: '#3f7f1d',
+      weeks: [22],
+      note: 'Peringatan 1 Muharam dilaksanakan satu kali dalam setahun sesuai kalender kegiatan.'
+    },
+    {
+      no: 7,
+      name: 'PERTEMUAN PKK',
+      color: '#ff4f98',
+      weeks: [25],
+      note: 'Pertemuan PKK menjadi kegiatan pemberdayaan wanita dan keluarga di lingkungan RT.'
+    },
+    {
+      no: 8,
+      name: 'BUKA PUASA BERSAMA',
+      color: '#e97632',
+      weeks: [22],
+      note: 'Buka puasa bersama dilaksanakan sebagai kegiatan keagamaan dan kebersamaan warga.'
+    },
+    {
+      no: 9,
+      name: 'HALAL BIHALAL',
+      color: '#d90b0b',
+      weeks: [23],
+      note: 'Halal bihalal dilaksanakan sebagai kegiatan silaturahmi setelah Idulfitri.'
+    },
+    {
+      no: 10,
+      name: 'RONDA',
+      color: '#0a76d8',
+      weeks: ALL_WEEKS,
+      note: 'Ronda berjalan rutin sepanjang tahun untuk menjaga keamanan dan ketertiban lingkungan.'
+    },
+    {
+      no: 11,
+      name: 'PANITIA QURBAN',
+      color: '#f0e41c',
+      weeks: [24, 25, 26, 27],
+      note: 'Panitia qurban aktif dalam periode persiapan dan pelaksanaan Iduladha.'
+    },
+    {
+      no: 12,
+      name: 'KOLEKTOR IURAN',
+      color: '#8f8f8f',
+      weeks: [1, 5, 9, 13, 17, 21, 25, 29, 33, 37, 41, 45],
+      note: 'Kolektor iuran berjalan pada Minggu Kedua setiap bulan.'
+    }
+  ];
+
+  function getAgendaSlotLabel(index) {
+    const month = AGENDA_MONTHS[Math.floor(index / 4)];
+    const week = AGENDA_WEEKS[index % 4];
+    return `${month} - Minggu ${week}`;
+  }
+
+  function buildAgendaChart() {
+    const table = document.getElementById('agendaChart');
+    const legend = document.getElementById('agendaLegend');
+    if (!table || !legend) return;
+
+    const thead = `
+      <thead>
+        <tr>
+          <th class="head-main sticky-no" rowspan="2">No</th>
+          <th class="head-main sticky-kegiatan" rowspan="2">Kegiatan</th>
+          ${AGENDA_MONTHS.map(month => `<th class="head-month" colspan="4">${month}</th>`).join('')}
+        </tr>
+        <tr>
+          ${AGENDA_MONTHS.map(() => AGENDA_WEEKS.map(week => `<th class="head-week">${week}</th>`).join('')).join('')}
+        </tr>
+      </thead>`;
+
+    let tbody = '<tbody>';
+    AGENDA_DATA.forEach(item => {
+      tbody += `
+        <tr>
+          <td class="sticky-no">${item.no}</td>
+          <td class="sticky-kegiatan agenda-kegiatan-cell">
+            <div class="agenda-kegiatan-wrap">
+              <span class="agenda-color-dot" style="background:${item.color};"></span>
+              <span>${item.name}</span>
+            </div>
+          </td>
+          ${ALL_WEEKS.map(index => {
+            const active = item.weeks.includes(index);
+            return `<td class="agenda-week-cell ${active ? 'agenda-active' : ''}" ${active ? `style="--cell-color:${item.color};"` : ''} title="${item.name} • ${getAgendaSlotLabel(index)}"></td>`;
+          }).join('')}
+        </tr>`;
+    });
+    tbody += '</tbody>';
+    table.innerHTML = thead + tbody;
+
+    legend.innerHTML = AGENDA_DATA.map(item => `
+      <div class="agenda-legend-card">
+        <span class="agenda-legend-swatch" style="background:${item.color};"></span>
+        <div>
+          <h4>${item.name}</h4>
+          <p>${item.note}</p>
+        </div>
+      </div>`).join('');
   }
 
   // ── BACK TO TOP ──
@@ -1589,6 +1794,7 @@ Create Date : 2026-06-24
   // ── INIT ──
   buildAlbumTabs();
   loadAlbum(0);
+  buildAgendaChart();
 </script>
 
 </body>
